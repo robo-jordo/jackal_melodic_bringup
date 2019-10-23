@@ -54,4 +54,7 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
    127.0.1.1       jordans-batcomputer
    192.168.0.105   jackal-desktop
    ```
-
+   * You may need to restart Networkmanager or just your whole computer for these changes to take affect.
+   * you can check these changes have worked by pinging by hostname.
+   e.g. from your computer
+   ```$ ping jackal-desktop```
