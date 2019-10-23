@@ -95,8 +95,12 @@ In order to bring up the Jackal with ROS melodic I reccomend using a new SSD and
    $ catkin_make
    ```
 
-#### 5. Building Jackal specific packages and dependancies on your computer
+#### 5. Building Jackal specific packages and dependencies on your computer
 
 #### 6. Setting up ROS to work between your computer and the Jackal
 
 #### 7. Final set up for Jackal specifics
+   These steps are the key to getting the Jackal up and running by setting up all the undocumented intracacies implemented by clearpath on a Jackal image.
+   These steps may not include intracacies specific to your system/add on packages for you Jackal. In that case I reccomend creating an issue on this github for me to look into or I would reccomend looking at the setup on you SSD with your old version of ROS running the Clearpath released and supported Jackal image.
+
+   
