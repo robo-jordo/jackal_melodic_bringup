@@ -45,8 +45,8 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
    for example the hosts file on the Jackal should look something like
    ```
    127.0.0.1       localhost
-   127.0.1.1       jordans-batcomputer
-   192.168.0.105   jackal-desktop
+   127.0.1.1       jackal-desktop
+   192.168.0.104   jordans-batcomputer
    ```
    and the hosts file on your computer should look something like
    ```
@@ -54,4 +54,4 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
    127.0.1.1       jordans-batcomputer
    192.168.0.105   jackal-desktop
    ```
-   
+
