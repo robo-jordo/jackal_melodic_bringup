@@ -37,7 +37,9 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
    * Log into the setting of your router. These next steps will vary depending on router. But I will provide the instructions as for a Linksys??? router.
    * **set up static ip for jackal and connecting computer on router**
    * To allow for easy hostname resolution, you will want to add these new static IP addresses to teh top of your /etc/hosts file like so
+
    <STATIC_IP>   <HOSTNAME>
+
    e.g 192.168.0.105   jackal-desktop
 
    You will want to add the set static ip and desired hostname of your computer to the hosts file on the Jackal and add the set static ip and desired hostname of the jackal to the hosts file on your computer.
@@ -65,9 +67,14 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
 
    * The official ROS installation instructions can be followed [here](http://wiki.ros.org/melodic/Installation/Ubuntu).
    * I recommend going for the 'Desktop-Full Install'
-   * the full set of instrcutiosn should be followed all the way up to point 1.7
+   * the full set of instructions should be followed all the way up to point 1.7
 
-#### 4. Building jackal specific packages and dependancies on the Jackal
+#### 4. Building jackal specific packages and dependancies on the Jackal.
+   Since the jackal pacages written by clearpath arent available for installation from apt they will need to be built from source. However all of the dependancies are available for ros melodic via apt and as such can be installed using ```$ apt get install ros-melodic-<package_name>``` 
+
+   The Jackal packages that will need to be built from source can be found on the [jackal github](https://github.com/jackal) and they are:
+      * [jackal](https://github.com/jackal/jackal)
+      * [jackal_robot](https://github.com/jackal/jackal_robot)
 
 
 #### 5. Building jackal specific packages and dependancies on your computer
