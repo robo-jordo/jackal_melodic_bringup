@@ -60,16 +60,18 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
    ```$ ping jackal-desktop```
    and SSHing by hostname should now be possible too.
 
-### 3. Installing ROS melodic
+#### 3. Installing ROS melodic
    You should install ROS melodic your computer as well as the Jackal. The process will be the same for both.
 
-   * ROS instructions
+   * The [official ROS installation instructions]() can be followed here.
+   * I recommend going for the 'Desktop-Full Install'
+   * the full set of instrcutiosn should be followed all the way up to point 1.7
 
-### 4. Building jackal specific packages and dependancies on the Jackal
+#### 4. Building jackal specific packages and dependancies on the Jackal
 
 
-### 5. Building jackal specific packages and dependancies on your computer
+#### 5. Building jackal specific packages and dependancies on your computer
 
-### 6. Setting up ROS to work between your computer and the jackal
+#### 6. Setting up ROS to work between your computer and the jackal
 
-### 7. Final set up for Jackal specifics
+#### 7. Final set up for Jackal specifics
