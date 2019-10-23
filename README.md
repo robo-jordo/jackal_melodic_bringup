@@ -28,4 +28,30 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
 #### 2. Setting up wireless networking:
    (This step is not strictly speaking necessary but being able to connect to the Jackal over WiFi is far more convenient.)
 
-   *
+   You will need to be able to access your wifi routers settings for this step.
+   I completed this in a Northwestern lab, to get around the the complexity of the public Northwestern WiFi I set up my own router connected to a LAN output in the lab.
+
+   * Connect the Jackal to your WiFi network.
+   * Once connected open a Terminal on the Jackal.
+   * Use ```$ ifconfig``` to find out the mac address of the Jackal.
+   * Log into the setting of your router. These next steps will vary depending on router. But I will provide the instructions as for a Linksys??? router.
+   * **set up static ip for jackal and connecting computer on router**
+   * To allow for easy hostname resolution, you will want to add these new static IP addresses to teh top of your /etc/hosts file like so
+   <STATIC_IP>   <HOSTNAME>
+   e.g 192.168.0.105   jackal-desktop
+
+   You will want to add the set static ip and desired hostname of your computer to the hosts file on the Jackal and add the set static ip and desired hostname of the jackal to the hosts file on your computer.
+
+   for example the hosts file on the Jackal should look something like
+   ```
+   127.0.0.1       localhost
+   127.0.1.1       jordans-batcomputer
+   192.168.0.105   jackal-desktop
+   ```
+   and the hosts file on your computer should look something like
+   ```
+   127.0.0.1       localhost
+   127.0.1.1       jordans-batcomputer
+   192.168.0.105   jackal-desktop
+   ```
+   
