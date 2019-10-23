@@ -63,7 +63,7 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
 #### 3. Installing ROS melodic
    You should install ROS melodic your computer as well as the Jackal. The process will be the same for both.
 
-   * The [official ROS installation instructions]() can be followed here.
+   * The official ROS installation instructions can be followed [here](http://wiki.ros.org/melodic/Installation/Ubuntu).
    * I recommend going for the 'Desktop-Full Install'
    * the full set of instrcutiosn should be followed all the way up to point 1.7
 
