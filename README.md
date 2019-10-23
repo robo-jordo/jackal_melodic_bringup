@@ -5,14 +5,14 @@
 This README contains instructions of bringing up the [Clearpath Jackal](https://clearpathrobotics.com/jackal-small-unmanned-ground-vehicle/) on a new version of ROS before official support from Clearpath.
 In this case this was done for [ROS melodic](http://wiki.ros.org/melodic) in October 2019.
 
-**Note:** This also includes isntructions and code for bringing up the jackal with a velodyne 3D lidar, the lidar specific steps can be omitted for jackals without the lidar, These steps will be marked with ???
+**Note:** This also includes isntructions and code for bringing up the Jackal with a velodyne 3D lidar, the lidar specific steps can be omitted for Jackals without the lidar, These steps will be marked with ???
 
 ![alt text](https://www.unmannedsystemstechnology.com/wp-content/uploads/2014/09/Jackal-UGV.jpg)
 
 ---
 
 ## Fresh start
-In order to bring up the jackal with ROS melodic I reccomend using a new SSD and not wiping your old SSD, this may be helpful if you make a mistake and want to backtrack to a working state for your system. I also found this helpful for debugging things like udev rules that were correctly configured by clearpath but are not documented.
+In order to bring up the Jackal with ROS melodic I reccomend using a new SSD and not wiping your old SSD, this may be helpful if you make a mistake and want to backtrack to a working state for your system. I also found this helpful for debugging things like udev rules that were correctly configured by clearpath but are not documented.
 
 #### 1. steps to a fresh Ubuntu 18.04 start:
    * Prepare a bootable USB with an Ubuntu 18.04 image. Following the [Official Ubuntu instructions for booting from USB](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0) is recommended.
@@ -35,14 +35,14 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
    * Once connected open a Terminal on the Jackal.
    * Use ```$ ifconfig``` to find out the mac address of the Jackal.
    * Log into the setting of your router. These next steps will vary depending on router. But I will provide the instructions as for a Linksys??? router.
-   * **set up static ip for jackal and connecting computer on router**
+   * **set up static ip for Jackal and connecting computer on router**
    * To allow for easy hostname resolution, you will want to add these new static IP addresses to teh top of your /etc/hosts file like so:
 
    <STATIC_IP>   <HOSTNAME>
 
    e.g 192.168.0.105   jackal-desktop
 
-   You will want to add the set static ip and desired hostname of your computer to the hosts file on the Jackal and add the set static ip and desired hostname of the jackal to the hosts file on your computer.
+   You will want to add the set static ip and desired hostname of your computer to the hosts file on the Jackal and add the set static ip and desired hostname of the Jackal to the hosts file on your computer.
 
    for example the hosts file on the Jackal should look something like
    ```
@@ -69,16 +69,34 @@ In order to bring up the jackal with ROS melodic I reccomend using a new SSD and
    * I recommend going for the 'Desktop-Full Install'
    * the full set of instructions should be followed all the way up to point 1.7
 
-#### 4. Building jackal specific packages and dependancies on the Jackal.
-   Since the jackal pacages written by clearpath arent available for installation from apt they will need to be built from source. However all of the dependancies are available for ros melodic via apt and as such can be installed using ```$ apt get install ros-melodic-<package_name>``` 
+#### 4. Building Jackal specific packages and dependancies on the Jackal.
+   Since the Jackal pacages written by clearpath arent available for installation from apt they will need to be built from source. However all of the dependancies are available for ros melodic via apt and as such can be installed using ```$ apt get install ros-melodic-<package_name>``` 
 
-   The Jackal packages that will need to be built from source can be found on the [jackal github](https://github.com/jackal) and they are:
+   The Jackal packages that will need to be built from source can be found on the [Jackal github](https://github.com/jackal) and they are:
    * [jackal](https://github.com/jackal/jackal)
    * [jackal_robot](https://github.com/jackal/jackal_robot)
 
+   In order to build these packages from source:
+   * Create a catkin workspace on the Jackal 
+   ```
+   $ mkdir -p ~/jackal_ws/src
+   $ cd ~/jackal_ws/
+   $ catkin_make
+   ```
+   * Clone both packages into the src directory of your workspace
+   ```
+   $ cd ~/jackal_ws/src
+   $ git clone https://github.com/jackal/jackal_robot.git
+   $ git clone https://github.com/jackal/jackal.git
+   ```
+   * run catkin_make to build the packages
+   ```
+   $ cd ~/jackal_ws
+   $ catkin_make
+   ```
 
-#### 5. Building jackal specific packages and dependancies on your computer
+#### 5. Building Jackal specific packages and dependancies on your computer
 
-#### 6. Setting up ROS to work between your computer and the jackal
+#### 6. Setting up ROS to work between your computer and the Jackal
 
 #### 7. Final set up for Jackal specifics
