@@ -5,14 +5,14 @@
 This README contains instructions of bringing up the [Clearpath Jackal](https://clearpathrobotics.com/jackal-small-unmanned-ground-vehicle/) on a new version of ROS before official support from Clearpath.
 In this case this was done for [ROS melodic](http://wiki.ros.org/melodic) in October 2019.
 
-**Note:** This also includes isntructions and code for bringing up the Jackal with a velodyne 3D lidar, the lidar specific steps can be omitted for Jackals without the lidar, These steps will be marked with ???
+**Note:** This also includes instructions and code for bringing up the Jackal with a velodyne 3D lidar, the lidar specific steps can be omitted for Jackals without the lidar, These steps will be marked with ???
 
 ![alt text](https://www.unmannedsystemstechnology.com/wp-content/uploads/2014/09/Jackal-UGV.jpg)
 
 ---
 
 ## Fresh start
-In order to bring up the Jackal with ROS melodic I reccomend using a new SSD and not wiping your old SSD, this may be helpful if you make a mistake and want to backtrack to a working state for your system. I also found this helpful for debugging things like udev rules that were correctly configured by clearpath but are not documented.
+In order to bring up the Jackal with ROS melodic I recommend using a new SSD and not wiping your old SSD, this may be helpful if you make a mistake and want to backtrack to a working state for your system. I also found this helpful for debugging things like udev rules that were correctly configured by Clearpath but are not documented.
 
 #### 1. steps to a fresh Ubuntu 18.04 start:
    * Prepare a bootable USB with an Ubuntu 18.04 image. Following the [Official Ubuntu instructions for booting from USB](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0) is recommended.
@@ -28,7 +28,7 @@ In order to bring up the Jackal with ROS melodic I reccomend using a new SSD and
 #### 2. Setting up wireless networking:
    (This step is not strictly speaking necessary but being able to connect to the Jackal over WiFi is far more convenient.)
 
-   You will need to be able to access your wifi routers settings for this step.
+   You will need to be able to access your WiFi routers settings for this step.
    I completed this in a Northwestern lab, to get around the the complexity of the public Northwestern WiFi I set up my own router connected to a LAN output in the lab.
 
    * Connect the Jackal to your WiFi network.
@@ -36,9 +36,9 @@ In order to bring up the Jackal with ROS melodic I reccomend using a new SSD and
    * Use ```$ ifconfig``` to find out the mac address of the Jackal.
    * Log into the setting of your router. These next steps will vary depending on router. But I will provide the instructions as for a Linksys??? router.
    * **set up static ip for Jackal and connecting computer on router**
-   * To allow for easy hostname resolution, you will want to add these new static IP addresses to teh top of your /etc/hosts file like so:
+   * To allow for easy hostname resolution, you will want to add these new static IP addresses to the top of your /etc/hosts file like so:
 
-   <STATIC_IP>   <HOSTNAME>
+   <STATIC_IP> <HOSTNAME>
 
    e.g 192.168.0.105   jackal-desktop
 
@@ -69,8 +69,8 @@ In order to bring up the Jackal with ROS melodic I reccomend using a new SSD and
    * I recommend going for the 'Desktop-Full Install'
    * the full set of instructions should be followed all the way up to point 1.7
 
-#### 4. Building Jackal specific packages and dependancies on the Jackal.
-   Since the Jackal pacages written by clearpath arent available for installation from apt they will need to be built from source. However all of the dependancies are available for ros melodic via apt and as such can be installed using ```$ apt get install ros-melodic-<package_name>``` 
+#### 4. Building Jackal specific packages and dependencies on the Jackal.
+   Since the Jackal packages written by Clearpath aren't available for installation from apt they will need to be built from source. However all of the dependencies are available for ROS melodic via apt and as such can be installed using ```$ apt get install ros-melodic-<package_name>``` 
 
    The Jackal packages that will need to be built from source can be found on the [Jackal github](https://github.com/jackal) and they are:
    * [jackal](https://github.com/jackal/jackal)
@@ -98,9 +98,10 @@ In order to bring up the Jackal with ROS melodic I reccomend using a new SSD and
 #### 5. Building Jackal specific packages and dependencies on your computer
 
 #### 6. Setting up ROS to work between your computer and the Jackal
+   To get your computer and the Jackal to share a ros master and be able to share topics, you can set the ROS_MASTER_URI and ROS_HOSTNAME environment variables on both the Jackal and your computer. This needs to be done each time a new terminal is opened or it can be added to ~/.bashrc. I prefer to do it in each terminal as I am not always using ROS with the Jackal. To make this easier this repo contains two bash scrips that can be sourced.
+   * [setup_jackal.bash]() : This can be sourced on your computer
+   * [setup_ros.bash]() : This can be sourced on the Jackal
 
 #### 7. Final set up for Jackal specifics
-   These steps are the key to getting the Jackal up and running by setting up all the undocumented intracacies implemented by clearpath on a Jackal image.
-   These steps may not include intracacies specific to your system/add on packages for you Jackal. In that case I reccomend creating an issue on this github for me to look into or I would reccomend looking at the setup on you SSD with your old version of ROS running the Clearpath released and supported Jackal image.
-
-   
+   These steps are the key to getting the Jackal up and running by setting up all the undocumented intricacies implemented by Clearpath on a Jackal image.
+   These steps may not include intricacies specific to your system/add on sensors for your Jackal. In that case I recommend looking at the setup on you SSD with your old version of ROS running the Clearpath supported Jackal image or creating an issue on this Github for me to look into.
