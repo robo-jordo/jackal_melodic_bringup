@@ -38,7 +38,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    * **set up static ip for Jackal and connecting computer on router**
    * To allow for easy hostname resolution, you will want to add these new static IP addresses to the top of your /etc/hosts file like so:
 
-   <STATIC_IP> <HOSTNAME>
+   [STATIC_IP] [HOSTNAME]
 
    e.g 192.168.0.105   jackal-desktop
 
