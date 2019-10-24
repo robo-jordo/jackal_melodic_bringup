@@ -105,3 +105,8 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 #### 7. Final set up for Jackal specifics
    These steps are the key to getting the Jackal up and running by setting up all the undocumented intricacies implemented by Clearpath on a Jackal image.
    These steps may not include intricacies specific to your system/add on sensors for your Jackal. In that case I recommend looking at the setup on you SSD with your old version of ROS running the Clearpath supported Jackal image or creating an issue on this Github for me to look into.
+
+   * **udev rules**
+   * **jackal_base systemd service on boot**
+   * **PS3 remote setup at boot**
+   * **Velodyne setup at boot**
