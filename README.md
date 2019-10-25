@@ -15,7 +15,7 @@ In this case this was done for [ROS melodic](http://wiki.ros.org/melodic) in Oct
 In order to bring up the Jackal with ROS melodic I recommend using a new SSD and not wiping your old SSD, this may be helpful if you make a mistake and want to backtrack to a working state for your system. I also found this helpful for debugging things like udev rules that were correctly configured by Clearpath but are not documented.
 
 #### 1. steps to a fresh Ubuntu 18.04 start:
-   * Prepare a bootable USB with an Ubuntu 18.04 image. Following the [Official Ubuntu instructions for booting from USB](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0) is recommended.
+   * Prepare a bootable USB with an Ubuntu 18.04 image. Follow the [Official Ubuntu instructions for booting from USB](https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-ubuntu#0).
 
    * While the Jackal is powered off, insert the bootable USB into the Jackal along with a keyboard, mouse and monitor.
 
@@ -33,15 +33,22 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
    * Connect the Jackal to your WiFi network.
    * Once connected open a Terminal on the Jackal.
-   * Use ```$ ifconfig``` to find out the mac address of the Jackal.
-   * Log into the setting of your router. These next steps will vary depending on router. But I will provide the instructions as for a Linksys??? router.
-   * **set up static ip for Jackal and connecting computer on router**
+   * Use ```$ ifconfig``` to find out the mac address of the Jackal. This will be listed under your wireless network interface (something like wlp2s0). The mac address will be six sets of hexadecimal numbers separated by colons.
+   * Log into the setting of your router. These next steps will vary depending on router. But I will provide the instructions as for a tp-link (TL-WR940N) router.
+   * Navigate to the IP & MAC binding tab on your WiFi router
+   * Use the MAC address found with ifconfig to bind a desired IP adress to your Jackal (the same can be done with your computer)
+   * **Note:** use an IP address starting with 192.168.0.XXX so as not to overlap with the IP address of the Velodyne.
+   * Restarting the router might be necessary for these changes to work.
+   * Check that this has worked by connecting to the WiFi and running ```ifconfig``` and checking that the IP address of your wirelees network interface is what you set it as.
    * To allow for easy hostname resolution, you will want to add these new static IP addresses to the top of your /etc/hosts file like so:
-
-   [STATIC_IP]   [HOSTNAME]
-
-   e.g 192.168.0.105   jackal-desktop
-
+   
+   ```
+   <STATIC_IP>   <HOSTNAME>
+   ```
+   e.g:
+   ```
+   192.168.0.105   jackal-desktop
+   ```
    You will want to add the set static ip and desired hostname of your computer to the hosts file on the Jackal and add the set static ip and desired hostname of the Jackal to the hosts file on your computer.
 
    for example the hosts file on the Jackal should look something like
@@ -71,6 +78,8 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
 #### 4. Building Jackal specific packages and dependencies on the Jackal.
    Since the Jackal packages written by Clearpath aren't available for installation from apt they will need to be built from source. However all of the dependencies are available for ROS melodic via apt and as such can be installed using ```$ apt get install ros-melodic-<package_name>``` 
+   
+   The dependencies required for the Jackal packages provided by Clearpath will need to be installed.
 
    The Jackal packages that will need to be built from source can be found on the [Jackal github](https://github.com/jackal) and they are:
    * [jackal](https://github.com/jackal/jackal)
@@ -96,9 +105,14 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    ```
 
 #### 5. Building Jackal specific packages and dependencies on your computer
+   Getting the required libraries on your computer:
+   * Installing the Jackal simulation packages will be helpful. This can be done for melodic with:
+   ```sudo apt-get install ros-melodic-jackal-simulator ros-melodic-jackal-desktop ros-melodic-jackal-navigation```
+
+   * Running Jackal simulations with your computer can be done by following [Clearpaths instructions](https://www.clearpathrobotics.com/assets/guides/jackal/simulation.html) 
 
 #### 6. Setting up ROS to work between your computer and the Jackal
-   To get your computer and the Jackal to share a ros master and be able to share topics, you can set the ROS_MASTER_URI and ROS_HOSTNAME environment variables on both the Jackal and your computer. This needs to be done each time a new terminal is opened or it can be added to ~/.bashrc. I prefer to do it in each terminal as I am not always using ROS with the Jackal. To make this easier this repo contains two bash scrips that can be sourced.
+   To get your computer and the Jackal to share a ROS master and be able to share topics, you can set the ROS_MASTER_URI and ROS_HOSTNAME environment variables on both the Jackal and your computer. This needs to be done each time a new terminal is opened or it can be added to ~/.bashrc. I prefer to do it in each terminal as I am not always using ROS with the Jackal. To make this easier this repo contains two bash scrips that can be sourced.
    * [setup_jackal.bash]() : This can be sourced on your computer
    * [setup_ros.bash]() : This can be sourced on the Jackal
 
