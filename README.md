@@ -51,18 +51,20 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    ```
    You will want to add the set static ip and desired hostname of your computer to the hosts file on the Jackal and add the set static ip and desired hostname of the Jackal to the hosts file on your computer.
 
-   for example the hosts file on the Jackal should look something like
+   for example the hosts file on the Jackal should look something like. 
    ```
    127.0.0.1       localhost
    127.0.1.1       jackal-desktop
    192.168.0.104   jordans-batcomputer
    ```
-   and the hosts file on your computer should look something like
+
+   and the hosts file on your computer should look something like:
    ```
    127.0.0.1       localhost
    127.0.1.1       jordans-batcomputer
    192.168.0.105   jackal-desktop
    ```
+
    * You may need to restart Networkmanager or just your whole computer for these changes to take affect.
    * you can check these changes have worked by pinging by hostname.
    e.g. from your computer
@@ -118,15 +120,15 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
 #### 6. Setting up ROS to work between your computer and the Jackal
    To get your computer and the Jackal to share a ROS master and be able to share topics, you can set the ROS_MASTER_URI and ROS_HOSTNAME environment variables on both the Jackal and your computer. This needs to be done each time a new terminal is opened or it can be added to ~/.bashrc. I prefer to do it in each terminal as I am not always using ROS with the Jackal. To make this easier this repo contains two bash scrips that can be sourced.
-   * [setup_jackal.bash]() : This can be sourced on your computer
-   * [setup_ros.bash]() : This can be sourced on the Jackal
+   * [setup_jackal.bash](src/setup_jackal.bash) : This can be sourced on your computer
+   * [setup_ros.bash](src/setup_ros.bash) : This can be sourced on the Jackal
 
 #### 7. Final set up for Jackal specifics
    These steps are the key to getting the Jackal up and running by setting up all the undocumented intricacies implemented by Clearpath on a Jackal image.
    These steps may not include intricacies specific to your system/add on sensors for your Jackal. In that case I recommend looking at the setup on you SSD with your old version of ROS running the Clearpath supported Jackal image or creating an issue on this Github for me to look into.
 
    * **udev rules**  
-   	The [udev file](!!!!!!!!FILE) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point.  
+   	The [udev file](src/51-ros-indigo-jackal-firmware.rules) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point.  
    	**Note:** If this file is not present or has not taken effect the jackal computer wont be able to find the motor control board in the /dev folder. 
    
    * **PS3 remote setup**  
@@ -138,9 +140,9 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
       * install sixad
       * disable sixpair service
 
-      * set PS3_JOYSTICK environment variable so the jackal packages know to use PS3 rather than PS4 
+      * set PS3_JOY environment variable so the jackal packages know to use PS3 rather than PS4 
       ```
-      export PS3_JOYSTICK = 1
+      export PS3_JOY = 1
       ```
 
    * :boom: **Velodyne setup**  
@@ -175,19 +177,20 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    The relevant nodes can be set to launch at boot by using systemd services. 
    This package includes two sets of scripts and services that work together to:  
       * Start the jackal specific nodes needed to use the joystick to move the jackal.
-      This set is in the [basic_boot folder](basic_boot)
+      This set is in the [basic_boot folder](src/basic_boot)
       * :boom: Start the jackal specific nodes needed to use the joystick to move the jackal as well as the nodes needed to publish the data from the lidar.
-      This set is in the [lidar_boot folder](lidar_boot)
+      This set is in the [lidar_boot folder](src/lidar_boot)
 
       These can be implemented by:
-      * Placing the executable ([basic](path) or [lidar](path)) in /usr/bin/ (make sure it is executable with chmod +x <SCRIPT_NAME>)
-      * Placing the service file ([basic](path) or [lidar](path)) in /etc/systemd/system
+      * Placing the executable ([basic](src/basic_boot/jackal) or [lidar](path)) in /usr/bin/ (make sure it is executable with chmod +x <SCRIPT_NAME>)
+      * Placing the service file ([basic](src/basic_boot/jackal-starter.service) or [lidar](path)) in /etc/systemd/system
       * Enabling the service with 
 
       ```
-      sudo systemctl enable <SERVICE_NAME>
+      $ sudo systemctl enable <SERVICE_NAME>
       ```
 
-      **Note: for basic boot the service name is ???? and for lidar boot the service name is ????**
+      **Note: for basic boot the service name is jackal-starter.service and for lidar boot the service name is jackal-velodyne-starter.service**
+      You should not have both services enabled at once.
 
 
