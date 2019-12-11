@@ -1,0 +1,10 @@
+[Unit]
+Description=Starts jackal specific nodes and ps3 pairing
+After=bluetooth.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/jackal
+
+[Install]
+WantedBy=multi-user.target

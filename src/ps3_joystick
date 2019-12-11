@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo sixad --stop
+source ~/jackal_ws/devel/setup.bash
+roslaunch jackal_base base.launch &
+sudo su -c ". /opt/ros/melodic/setup.bash && rosrun ps3joy ps3joy.py --inactivity-timeout=200"
