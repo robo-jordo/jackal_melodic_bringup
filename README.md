@@ -126,8 +126,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    These steps may not include intricacies specific to your system/add on sensors for your Jackal. In that case I recommend looking at the setup on you SSD with your old version of ROS running the Clearpath supported Jackal image or creating an issue on this Github for me to look into.
 
    * **udev rules**  
-   	The [udev file](!!!!!!!!FILE) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point. 
-
+   	The [udev file](!!!!!!!!FILE) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point.  
    	**Note:** If this file is not present or has not taken effect the jackal computer wont be able to find the motor control board in the /dev folder. 
    
    * **PS3 remote setup**  
@@ -172,11 +171,9 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
    
    
-   * **Setup boot procedure**
-
+   * **Setup boot procedure**  
    The relevant nodes can be set to launch at boot by using systemd services. 
-   This package includes two sets of scripts and services that work together to:
-
+   This package includes two sets of scripts and services that work together to:  
       * Start the jackal specific nodes needed to use the joystick to move the jackal.
       This set is in the [basic_boot folder](basic_boot)
       * :boom: Start the jackal specific nodes needed to use the joystick to move the jackal as well as the nodes needed to publish the data from the lidar.
