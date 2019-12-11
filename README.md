@@ -127,13 +127,13 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
    * **udev rules**
 
-   The [udev file](!!!!!!!!FILE) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point. 
+   	The [udev file](!!!!!!!!FILE) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point. 
 
-   **Note:** If this file is not present or has not taken effect the jackal computer wont be able to find the motor control board in the /dev folder. 
+   	**Note:** If this file is not present or has not taken effect the jackal computer wont be able to find the motor control board in the /dev folder. 
    
    * **PS3 remote setup**
-   
-   The PS3 remote setup is a complicated process and I would reccomend trying to use a PS4 controler if possible. The process to use a ps3 controller is as follows:
+
+   	The PS3 remote setup is a complicated process and I would reccomend trying to use a PS4 controler if possible. The process to use a ps3 controller is as follows:
       * install ps3joy
          ```
          sudo apt-get install ros-melodic-ps3joy
@@ -147,7 +147,8 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
       ```
 
    * :boom: **Velodyne setup**
-   In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed.
+   
+   	In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed.
 
       * Networking:
       The interfaces file need to be changed to get the Jackal to be able to reach the VLP-16 via the enp3s0 network interface. The interfaces file on the Jackal can simply be replaced by the [interfaces file included in this repo](src/interfaces) or the following lines can be added to the interfaces file:
@@ -175,6 +176,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    
    
    * **Setup boot procedure**
+
    The relevant nodes can be set to launch at boot by using systemd services. 
    This package includes two sets of scripts and services that work together to:
 
