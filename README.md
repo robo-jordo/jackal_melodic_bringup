@@ -131,11 +131,64 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    * **PS3 remote setup**
    The PS3 remote setup is a complicated process and I would reccomend trying to use a PS4 controler if possible. The process to use a ps3 controller is as follows:
       * install ps3joy
+         ```
+         sudo apt-get install ros-melodic-ps3joy
+         ```
       * install sixad
       * disable sixpair service
 
-   * **Velodyne setup**
+      * set PS3_JOYSTICK environment variable so the jackal packages know to use PS3 rather than PS4 
+      ```
+      export PS3_JOYSTICK = 1
+      ```
+
+   * :boom: **Velodyne setup**
+   In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed.
+
+      * Networking:
+      The interfaces file need to be changed to get the Jackal to be able to reach the VLP-16 via the enp3s0 network interface. The interfaces file on the Jackal can simply be replaced by the [interfaces file included in this repo](src/interfaces) or the following lines can be added to the interfaces file:
+
+      ```
+      auto enp3s0
+      iface enp3s0 inet static
+         address 192.168.1.70
+         netmask 255.255.255.0
+         network 192.168.1.0
+         broadcast 192.168.1.255
+      ```
+      These changes can be applied by running the following in the terminal:
+      ```
+      $ sudo ifdown enp3s0
+      $ sudo ifup enp3s0
+      ```
+
+      * Packages:
+         * ros-melodic-velodyne-pointcloud (necessary)
+            - This package contains nodes to read the poincloud data from the velodyne and publish it to the relevant ROS topics.
+         * ros-melodic-pointcloud-to-laserscan (nice to have and utilized by the launch files in this package)
+            - This package contains a node to convert 3D point cloud data to a single layer laserscan, which is useful for gmapping.
+
    
    
    * **Setup boot procedure**
+
+   The relevant nodes can be set to launch at boot by using systemd services. 
+   This package includes two sets of scripts and services that work together to:
+
+      1) Start the jackal specific nodes needed to use the joystick to move the jackal.
+         This set is in the [basic_boot folder](basic_boot)
+
+      * :boom: Start the jackal specific nodes needed to use the joystick to move the jackal as well as the nodes needed to publish the data from the lidar.
+         This set is in the [lidar_boot folder](lidar_boot)
+
+      These can be implemented by:
+      * Placing the executable in /usr/bin/ (make sure it is executable with chmod +x <SCRIPT_NAME>)
+      * Placing the service file in /etc/systemd/system
+      * Enabling the service with 
+      ```
+      sudo systemctl enable <SERVICE_NAME>
+      ```
+
+      **Note: for basic boot the service name is ???? and for lidar boot the service name is ????**
+
 
