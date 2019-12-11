@@ -5,7 +5,7 @@
 This README contains instructions of bringing up the [Clearpath Jackal](https://clearpathrobotics.com/jackal-small-unmanned-ground-vehicle/) on a new version of ROS before official support from Clearpath.
 In this case this was done for [ROS melodic](http://wiki.ros.org/melodic) in October 2019.
 
-**Note:** This also includes instructions and code for bringing up the Jackal with a velodyne 3D lidar, the lidar specific steps can be omitted for Jackals without the lidar, These steps will be marked with ???
+**Note:** This also includes instructions and code for bringing up the Jackal with a velodyne 3D lidar, the lidar specific steps can be omitted for Jackals without the lidar, These steps will be marked with :boom:
 
 ![alt text](https://www.unmannedsystemstechnology.com/wp-content/uploads/2014/09/Jackal-UGV.jpg)
 
@@ -39,7 +39,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    * Use the MAC address found with ifconfig to bind a desired IP adress to your Jackal (the same can be done with your computer)
    * **Note:** use an IP address starting with 192.168.0.XXX so as not to overlap with the IP address of the Velodyne.
    * Restarting the router might be necessary for these changes to work.
-   * Check that this has worked by connecting to the WiFi and running ```ifconfig``` and checking that the IP address of your wirelees network interface is what you set it as.
+   * Check that this has worked by connecting to the WiFi and running ```ifconfig``` and checking that the IP address of your wireless network interface is what you set it as.
    * To allow for easy hostname resolution, you will want to add these new static IP addresses to the top of your /etc/hosts file like so:
    
    ```
@@ -77,9 +77,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    * the full set of instructions should be followed all the way up to point 1.7
 
 #### 4. Building Jackal specific packages and dependencies on the Jackal.
-   Since the Jackal packages written by Clearpath aren't available for installation from apt they will need to be built from source. However all of the dependencies are available for ROS melodic via apt and as such can be installed using ```$ apt get install ros-melodic-<package_name>``` 
-   
-   The dependencies required for the Jackal packages provided by Clearpath will need to be installed.
+   Since two of the Jackal packages written by Clearpath aren't available for installation from apt they will need to be built from source.
 
    The Jackal packages that will need to be built from source can be found on the [Jackal github](https://github.com/jackal) and they are:
    * [jackal](https://github.com/jackal/jackal)
@@ -98,6 +96,13 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    $ git clone https://github.com/jackal/jackal_robot.git
    $ git clone https://github.com/jackal/jackal.git
    ```
+   
+   * Since all of the other packages needed are released for melodic they can be installed with apt- get. In the top level of your catkin workspace run rosdep to install all the dependancies.
+   ```
+   $ cd ~/jackal_ws
+   $ rosdep install --from-paths src --ignore-src -r -y
+   ```
+   
    * run catkin_make to build the packages
    ```
    $ cd ~/jackal_ws
@@ -121,6 +126,16 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    These steps may not include intricacies specific to your system/add on sensors for your Jackal. In that case I recommend looking at the setup on you SSD with your old version of ROS running the Clearpath supported Jackal image or creating an issue on this Github for me to look into.
 
    * **udev rules**
-   * **jackal_base systemd service on boot**
-   * **PS3 remote setup at boot**
-   * **Velodyne setup at boot**
+    The [udev file](!!!!!!!!FILE) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the jackal at this point.
+   
+   * **PS3 remote setup**
+   The PS3 remote setup is a complicated process and I would reccomend trying to use a PS4 controler if possible. The process to use a ps3 controller is as follows:
+      * install ps3joy
+      * install sixad
+      * disable sixpair service
+
+   * **Velodyne setup**
+   
+   
+   * **Setup boot procedure**
+
