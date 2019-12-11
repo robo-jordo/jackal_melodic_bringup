@@ -178,12 +178,12 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
       1) Start the jackal specific nodes needed to use the joystick to move the jackal.
          This set is in the [basic_boot folder](basic_boot)
 
-      * :boom: Start the jackal specific nodes needed to use the joystick to move the jackal as well as the nodes needed to publish the data from the lidar.
+      2) :boom: Start the jackal specific nodes needed to use the joystick to move the jackal as well as the nodes needed to publish the data from the lidar.
          This set is in the [lidar_boot folder](lidar_boot)
 
       These can be implemented by:
-      * Placing the executable in /usr/bin/ (make sure it is executable with chmod +x <SCRIPT_NAME>)
-      * Placing the service file in /etc/systemd/system
+      * Placing the executable ([basic](path) or [lidar](path)) in /usr/bin/ (make sure it is executable with chmod +x <SCRIPT_NAME>)
+      * Placing the service file ([basic](path) or [lidar](path)) in /etc/systemd/system
       * Enabling the service with 
       ```
       sudo systemctl enable <SERVICE_NAME>
