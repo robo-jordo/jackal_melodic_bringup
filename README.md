@@ -171,6 +171,8 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
          * ros-melodic-pointcloud-to-laserscan (nice to have and utilized by the launch files in this package)
             - This package contains a node to convert 3D point cloud data to a single layer laserscan, which is useful for gmapping.
 
+	To publish the Pointcloud data to a topic, VLP16_points.launch can be launched. Along with this node a static tf transform needs to be defined from the "base_link" of the Jackal to the "velodyne" link.
+	An example of this can be seen in the [velodyne.launch](src/velodyne.launch) file in this repo.
    
    
    * **Setup boot procedure**  
@@ -192,5 +194,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
       **Note: for basic boot the service name is jackal-starter.service and for lidar boot the service name is jackal-velodyne-starter.service**
       You should not have both services enabled at once.
+	  
+	  The executables may require that the user directory on the jackal is named "jackal".
 
 
