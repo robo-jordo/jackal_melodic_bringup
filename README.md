@@ -128,11 +128,11 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
    These steps may not include intricacies specific to your system/add on sensors for your Jackal. In that case I recommend looking at the setup on you SSD with your old version of ROS running the Clearpath supported Jackal image or creating an issue on this Github for me to look into.
 
    * **udev rules**  
-   	The [udev file](src/51-ros-indigo-jackal-firmware.rules) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point.  
-   	**Note:** If this file is not present or has not taken effect the jackal computer wont be able to find the motor control board in the /dev folder. 
+      The [udev file](src/51-ros-indigo-jackal-firmware.rules) included in this repository will need to be added to the system   udev rules on the Jackal. This can be done by copying the rules into the /etc/udev/rules.d folder on the Jackal. In order for the rule to take effect the Jackal will need to be restarted or the udev rules will need to be refreshed. I recommend restarting the Jackal at this point.  
+      **Note:** If this file is not present or has not taken effect the jackal computer wont be able to find the motor control board in the /dev folder. 
    
    * **PS3 remote setup**  
-   	The PS3 remote setup is a complicated process and I would reccomend trying to use a PS4 controler if possible. The process to use a ps3 controller is as follows:
+      The PS3 remote setup is a complicated process and I would reccomend trying to use a PS4 controler if possible. The process to use a ps3 controller is as follows:
       * install ps3joy
          ```
          sudo apt-get install ros-melodic-ps3joy
@@ -151,7 +151,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
 
    * :boom: **Velodyne setup**  
-   	In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed. The IP address of the LIDAR  is foind in the documentation from Velodyne and in the case of the VLP-16 it is set as 192.168.1.201
+      In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed. The IP address of the LIDAR  is foind in the documentation from Velodyne and in the case of the VLP-16 it is set as 192.168.1.201
 
       * Networking:
       The interfaces file need to be changed to get the Jackal to be able to reach the VLP-16 via the enp3s0 network interface. The interfaces file on the Jackal can simply be replaced by the [interfaces file included in this repo](src/interfaces) or the following lines can be added to the interfaces file:
@@ -176,8 +176,8 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
          * ros-melodic-pointcloud-to-laserscan (nice to have and utilized by the launch files in this package)
             - This package contains a node to convert 3D point cloud data to a single layer laserscan, which is useful for gmapping.
 
-	To publish the Pointcloud data to a topic, VLP16_points.launch can be launched. Along with this node a static tf transform needs to be defined from the "base_link" of the Jackal to the "velodyne" link.
-	An example of this can be seen in the [velodyne.launch](src/velodyne.launch) file in this repo.
+   To publish the Pointcloud data to a topic, VLP16_points.launch can be launched. Along with this node a static tf transform needs to be defined from the "base_link" of the Jackal to the "velodyne" link.
+   An example of this can be seen in the [velodyne.launch](src/velodyne.launch) file in this repo.
    
    
    * **Setup boot procedure**  
@@ -199,8 +199,8 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
 
       **Note: for basic boot the service name is jackal-starter.service and for lidar boot the service name is jackal-velodyne-starter.service**
       You should not have both services enabled at once.
-	  
+     
      # NB
-	  **The executables may require that the user directory on the jackal is named "jackal".**
+     **The executables may require that the user directory on the jackal is named "jackal".**
 
 
