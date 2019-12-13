@@ -189,8 +189,8 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
       This set is in the [lidar_boot folder](src/lidar_boot)
 
       These can be implemented by:
-      * Placing the executable ([basic](src/basic_boot/jackal) or [lidar](src/basic_boot/jackal-velodyne)) in /usr/bin/ (make sure it is executable with chmod +x <SCRIPT_NAME>)
-      * Placing the service file ([basic](src/basic_boot/jackal-starter.service) or [lidar](src/basic_boot/jackal-velodyne-starter.service)) in /etc/systemd/system
+      * Placing the executable ([basic](src/basic_boot/jackal) or [lidar](src/lidar_boot/jackal-velodyne)) in /usr/bin/ (make sure it is executable with chmod +x <SCRIPT_NAME>)
+      * Placing the service file ([basic](src/basic_boot/jackal-starter.service) or [lidar](src/lidar_boot/jackal-velodyne-starter.service)) in /etc/systemd/system
       * Enabling the service with 
 
       ```
