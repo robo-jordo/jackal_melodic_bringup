@@ -140,10 +140,15 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
       * install sixad
       * disable sixpair service
 
-      * set PS3_JOY environment variable so the jackal packages know to use PS3 rather than PS4 
+      * set JACKAL_PS3 environment variable so the jackal packages know to use PS3 rather than PS4 
       ```
-      export PS3_JOY = 1
+      export JACKAL_PS3 = 1
       ```
+      In order for the PS3 remote to work on boot this will need to be added to the .bashrc file on the jackal.
+       ```
+      echo 'export JACKAL_PS3 = 1' >> ~/.bashrc
+      ```
+
 
    * :boom: **Velodyne setup**  
    	In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed. The IP address of the LIDAR  is foind in the documentation from Velodyne and in the case of the VLP-16 it is set as 192.168.1.201
