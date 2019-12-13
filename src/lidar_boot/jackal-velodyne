@@ -1,7 +1,7 @@
 #!/bin/bash
 source /opt/ros/melodic/setup.bash
-source /home/jakal/jackal_ws/devel/setup.bash
-source /home/jakal/setup_ros.bash
+source /home/jackal/jackal_ws/devel/setup.bash
+source /home/jackal/setup_ros.bash
 roslaunch jackal_base base.launch &
 sleep 2
 sixad --stop
