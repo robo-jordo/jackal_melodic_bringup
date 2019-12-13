@@ -201,6 +201,6 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
       You should not have both services enabled at once.
      
      # NB
-     **The executables may require that the user directory on the jackal is named "jackal".**
+     **The executables require that the user directory on the jackal is named "jackal". You can change this in the scripts**
 
 
