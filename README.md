@@ -203,4 +203,28 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
      # NB
      **The executables require that the user directory on the jackal is named "jackal". You can change this in the scripts**
 
+## Starting the Northwestern Jackal
+
+Turn the Jackal on with the big power button and then the small red button. 
+Once the Jackal is on connecting the PS3 remote should be as simple as pressing the power button twice slowly.
+
+* Get computer onto the jackal_router network in the lab.
+* SSH into the Jackal with ssh jakal@jackal-desktop  (not a typo)
+* In every new terminal on the jackal source ros_setup.bash
+* In every new terminal on the jackal source jackal_setup.bash
+* On the jackal, each in a new terminal:
+   * ``` $ roslaunch jackal_melodic_bringup velodyne.launch```
+   * ``` $ roslaunch jackal_navigation gmapping.launch scan:=/front/scan```
+   * ``` $ roslaunch jackal_navigation move_base.launch ```
+
+* On your local computer:
+   * ``` $ roslaunch octomap_server octomap_mapping.launch cloud_in:=/velodyne_points ```
+   * ```roslaunch jackal_viz view_robot.launch config:=gmapping```
+
+
+This should do the trick. Note on the jackal the jackal_melodic_bringup package may be named 'jordan'. This is to keep track of which student has added what to the robot.
+
+
+
+
 
