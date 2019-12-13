@@ -1,0 +1,11 @@
+#!/bin/bash
+source /opt/ros/melodic/setup.bash
+source /home/jakal/jackal_ws/devel/setup.bash
+source /home/jakal/setup_ros.bash
+roslaunch jackal_base base.launch &
+sleep 2
+sixad --stop
+sleep 2
+roslaunch jackal_melodic_bringup velodyne.launch &
+source /opt/ros/melodic/setup.bash && rosrun ps3joy ps3joy.py --inactivity-timeout=200
+

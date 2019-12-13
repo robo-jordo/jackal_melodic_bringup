@@ -1,0 +1,10 @@
+[Unit]
+Description=Starts jackal specific nodes, ps3 pairing and velodyne nodes
+After=bluetooth.target
+Requires=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/jackal-velodyne
+
+[Install]
+WantedBy=multi-user.target
