@@ -146,7 +146,7 @@ In order to bring up the Jackal with ROS melodic I recommend using a new SSD and
       ```
 
    * :boom: **Velodyne setup**  
-   	In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed.
+   	In order to get the velodyne VLP-16 to work with the Jackal the jackal needs to be set up to interface with the LIDAR over the network interface and some libraries need to be installed. The IP address of the LIDAR  is foind in the documentation from Velodyne and in the case of the VLP-16 it is set as 192.168.1.201
 
       * Networking:
       The interfaces file need to be changed to get the Jackal to be able to reach the VLP-16 via the enp3s0 network interface. The interfaces file on the Jackal can simply be replaced by the [interfaces file included in this repo](src/interfaces) or the following lines can be added to the interfaces file:
