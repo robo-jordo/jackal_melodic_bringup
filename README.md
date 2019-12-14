@@ -7,7 +7,12 @@ In this case this was done for [ROS melodic](http://wiki.ros.org/melodic) in Oct
 
 **Note:** This also includes instructions and code for bringing up the Jackal with a velodyne 3D lidar, the lidar specific steps can be omitted for Jackals without the lidar, These steps will be marked with :boom:
 
-![alt text](https://www.unmannedsystemstechnology.com/wp-content/uploads/2014/09/Jackal-UGV.jpg)
+<!-- ![alt text](https://www.unmannedsystemstechnology.com/wp-content/uploads/2014/09/Jackal-UGV.jpg) -->
+Here is a video of the Jackal working.
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=rl_qqtuZsGw
+" target="_blank"><img src="http://img.youtube.com/vi/rl_qqtuZsGw/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="480" height="360" border="10" /></a>
 
 ---
 
